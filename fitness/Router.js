@@ -13,7 +13,7 @@ route.get('/', async(req, res) => {
         res.status(500).send('Server Error');
     }
 })
-route.get('/beginner', async(req, res) => {
+route.get('/workoutplan', async(req, res) => {
     // const name = req.params.id
 
    try {
