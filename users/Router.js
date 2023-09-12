@@ -13,8 +13,8 @@ route.get('/:id', async(req, res) => {
 route.put('/:id', async(req, res) => {
     const id = req.params.id
    const  {name , email , age , weight , height , gender ,imgUrl} = req.body
-console.log(req.body , "body ")
-console.log(id , "id")
+ // console.log(req.body , "body ")
+ // console.log(id , "id")
 
    try {
         const item = await db.collection('users').findOneAndReplace({name: id},{
