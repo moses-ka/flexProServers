@@ -2,6 +2,23 @@ import express from 'express';
 import db from './mongodb.js';
 
 const route = express.Router();
+route.post('/contact', async(req, res) => {
+    const name = req.body.name
+    const email = req.body.email
+    const message = req.body.message
+    try {
+        const text = await db.collection('contact').findOneAndReplace({name:name},{
+            name: name,
+            email: email,
+            message: message,
+        },{ upsert: true })
+        res.status(200).send(text);
+        }
+    catch (error) {
+        console.log(error);
+        res.status(500).send('error');
+    }
+})
 route.get('/:id', async(req, res) => {
     const id = req.params.id
     try {
