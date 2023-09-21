@@ -49,4 +49,18 @@ route.put('/:id', async(req, res) => {
         res.status(500).send('Server Error');
     }
 })
+route.delete('/:id', async(req, res) => {
+    const id = req.params.id
+  
+ // console.log(req.body , "body ")
+ // console.log(id , "id")
+
+   try {
+        const item = await db.collection('users').deleteOne({name: id} )
+        res.status(200).send('User updated');
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Server Error');
+    }
+})
 export default route
